@@ -1,0 +1,16 @@
+#!/bin/bash
+
+HOST="127.0.0.1"
+DB="keiser"
+USER="katellynhyker"
+PASSWORD="password"
+DB_PORT="5432"
+
+export HOST
+export PASSWORD
+export DB
+export USER
+export PASSWORD
+export DB_PORT
+
+fastapi run "backend/main.py"
