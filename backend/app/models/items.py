@@ -4,6 +4,5 @@ from enum import Enum
 from tortoise import fields, models
 
 class Items(models.model):
-    item_id = fields.IntField(primary_key=True)
+    id = fields.IntField(primary_key=True)
     item_name = fields.CharField()
-    
