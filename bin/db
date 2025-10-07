@@ -2,7 +2,7 @@
 
 HOST="127.0.0.1"
 DB="keiser"
-USER="katellyhyker"
+USER="katellynhyker"
 PASSWORD=""
 DB_PORT="5432"
 
