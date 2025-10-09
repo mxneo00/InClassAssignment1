@@ -3,3 +3,5 @@ pandas
 uvicorn
 asyncpg
 dotenv
+tortoise-orm[asyncpg]
+passlib
