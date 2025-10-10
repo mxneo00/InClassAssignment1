@@ -7,14 +7,13 @@
 	</head>
 
 	<style>
-		.pink-bg {
-			background-color: #cc5d5d;
+		.grey-bg {
+			background-color: rgb(91, 91, 91);
 		}
 		.bttn {
 			background: #1d54bc;
 			border-radius: 10px;
 			box-shadow: 5px 5px 5 5 #0a1d41;
-			/* border: 1px solid white; */
 			padding: 10px;
 			width:200px;
 			text-align: center;
@@ -26,30 +25,63 @@
 			background: #5a88de;
 			transition: 0.2s ease-in-out;
 		}
+
+		.container {
+			background: white;
+			padding: 20px;
+		}
+
+		.form {
+			display: flex;
+			margin-top: 20px;
+		}
+
 	</style>
 
 	<script>
 		let gate = false;
+		
+		$(document).ready(function() {
+			$("#add-bttn").click(function() {
+				const itemName = $("#new-item").val().trim();
+				if(!itemName) return alert("Please enter an item");
+				$("#item-list").append(`
+					<div class="item">
+						<span>${itemName}</span>
+						<button class="delete-bttn">Delete</button>
+				`);
+				$("#new-item").val("");
+			});
 
-		$(document).ready(function(){
-			$("#color-changing-bttn").click(function(){
-				if (gate) {
-					document.body.style.backgroundColor = "#ccffff";
-				} else {
-					document.body.style.backgroundColor = "#ccff00";
-				}
-				gate = !gate;
-				console.log("Color has been changed to cyan");
+			$(document).on("click", ".delete-bttn", function() {
+				$(this).parent().remove();
 			});
 		});
 	</script>
 
-	<body class="pink-bg">
+	<body class="grey-bg">
 		<header></header>
 		<main>
-			<H1>Katellyn Hyker In Class Assignment 1</h1>
-			<p>I am on host {{ host }} Welcome to FastAPI</p>
-			<div id="color-changing-bttn" class="bttn">Click Me!</div>
+			<div class="container">
+				<h1>Item Manager</h1>
+				<p>Katellyn Hyker. I am on host {{ host }}. Welcome to FastApi</p>
+
+				<div class="form">
+					<input type="text" id="new-item" placeholder="Enter a new item"/>
+					<button id="add-bttn" class="bttn">Add Item</button>
+				</div>
+
+				<div class="item-list" id="item-list">
+					<div class="item">
+						<span>Apples</span>
+						<button class="delete-bttn">Delete</button>
+					</div>
+					<div class="item">
+						<span>Bananas</span>
+						<button class="delete-bttn">Delete</button>
+					</div>
+				</div>
+			</div>
 		</main>
 		<footer></footer>
 	</body>

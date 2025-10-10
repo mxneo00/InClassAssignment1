@@ -20,4 +20,10 @@ async def lifespan(app: FastAPI):
         "redis://localhost:6739",
         decode_responses=True    
     )
+
+    try: 
+        yield
+    finally:
+        await app.state.redis.close()
+        await Tortoise.close_connections()
     
