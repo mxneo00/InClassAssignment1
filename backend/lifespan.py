@@ -1,7 +1,7 @@
 import os
 import ssl
 from contextlib import asynccontextmanager
-import aioredis
+#import aioredis
 
 from fastapi import FastAPI
 from tortoise import Tortoise
@@ -14,12 +14,12 @@ async def lifespan(app: FastAPI):
         modules={"models": ["app.models"]}
     )
     
-    await Tortoise.generate_schema()
+    await Tortoise.generate_schemas()
     
-    app.state.redis = await aioredis.from_url(
-        "redis://localhost:6739",
-        decode_responses=True    
-    )
+    #app.state.redis = await aioredis.from_url(
+    #    "redis://localhost:6739",
+    #    decode_responses=True    
+    #)
 
     try: 
         yield
