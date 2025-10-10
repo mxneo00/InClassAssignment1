@@ -7,15 +7,14 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 
-from backend.app.models.items import Item
-from backend.lifespan import lifespan
+from app.models.items import Item
+from lifespan import lifespan
 
 app = FastAPI(lifespan = lifespan)
 
 origins = [
     "http://localhost:5173",
 ]
-
 
 templates = Jinja2Templates(directory="backend/public/html")
 app.mount("/asset", StaticFiles(directory="backend/public/asset"), name="asset")
